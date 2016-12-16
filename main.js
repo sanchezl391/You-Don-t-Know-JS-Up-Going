@@ -25,3 +25,4 @@ function purchase(){
     console.log("INSUFFICIENT FUNDS. PLEASE TRY AGAIN");
   }
 }
+console.log();
