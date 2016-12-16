@@ -1,6 +1,10 @@
-var a = 10;
-if(a == 10)
-  {
-    var b = 20;
-  }
-  console.log(b);
+"use strict";//Strict mode
+var sum = addTax(100);//--> function calculateTax() with x passed in as a value
+function addTax(x){
+  function calculateTax(y){
+    return x + x * y;
+  };
+  return calculateTax;
+}
+
+console.log(sum);
