@@ -1,0 +1,30 @@
+This is determined by examining the call site.(Where the function was called)
+It is important to write code in a style of ignoring this or embrace this.
+
+The order of precedence are as follows
+1.Called with new? Use the newly constructed object.
+
+2.Called with call or apply (or bind)? Use the specified object.
+
+3.Called with a context object owning the call? Use that context object.
+
+4.Default: undefined in strict mode, global object otherwise.
+
+
+
+// spreading out array as parameters
+foo.apply( null, [2, 3] ); // a:2, b:3
+
+// currying with `bind(..)`
+var bar = foo.bind( null, 2 );
+Be careful of accidental/unintentional invoking of the default binding rule.
+In cases where you want to "safely" ignore a this binding, a "DMZ" object like
+ ø = Object.create(null) is a good placeholder value that protects the global
+ object from unintended side-effects.
+
+
+//Not embracing this
+Instead of the four standard binding rules, ES6 arrow-functions use lexical
+scoping for this binding, which means they adopt the this binding (whatever it is)
+ from its enclosing function call. They are essentially a syntactic replacement
+ of self = this in pre-ES6 coding.
