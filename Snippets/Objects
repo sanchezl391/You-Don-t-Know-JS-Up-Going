@@ -1,0 +1,44 @@
+Objects in javascript are created with:
+1. literal notation
+  var myObj = {
+  	key: value
+  	// ...
+  };
+2.constructed form
+  var myObj = new Object();
+  myObj.key = value;
+Literal Notation should be used unless you need more options(Prototypal Inheritance)
+
+Always use primitive javascript types over constructed objects, such as new String()
+Unless you need more options(Prototypal Inheritance)
+
+A function inside an object does not belong to the object. It is a reference
+to the function.
+
+A shallow copy of an object can be made with var newObj = Object.assign({},obj);
+Shallow copy means that we copy values on the object, but not references to values
+outside of the object.
+
+Whenever a property is accessed, the engine invokes the internal default
+  [[Get]] operation (and [[Put]] for setting values), which not only looks for the
+  property directly on the object, but which will traverse the [[Prototype]] chain
+  if not found.
+You can define properties on an object with defineProperty(), which gives you extra
+  options of setting Enumerable, writable, configurable.
+Objects can have getters and setters, which are primarily used to COMPUTE values
+  directly on the object through a function.
+
+It is a good idea to iterate arrays with for() loops and objects with for in() loops.
+Arrays's can also be iterated with forEach(), every(), some().
+For in() does not guarantee object value ordering when iterating
+For of can be used on arrays and objects(if an iterator is specified) to access its
+  values instead of its keys.
+  For ex:
+    let list = [4, 5, 6];
+
+    for (let i in list) {
+       console.log(i); // "0", "1", "2",
+    }
+    for (let i of list) {
+       console.log(i); // "4", "5", "6"
+    }
