@@ -1,0 +1,34 @@
+Every object has a .prototype property that references an arbitrary object("Foo's prototype object").
+When we call new(func), as a side effect of new, we create a prototype link to the "Foo's prototype object"
+
+    function Foo() {
+    	// ...
+    }
+
+    var a = new Foo();
+
+    Object.getPrototypeOf( a ) === Foo.prototype; // true
+
+  What we have here are links(DELEGATION) to the same "Foo's prototype object"
+  A more direct way of linking objects are with Object.create(..)
+
+Constructors
+  There is a .constructor property on every "Foo's prototype object" that points to the function that created it.
+  When we call new(func) this is a constructor call.
+  When using new()
+    1.A new object is created, inheriting from Foo.prototype.
+    2.The constructor function Foo is called with the specified arguments, and with this
+        bound to the newly created object. new Foo is equivalent to new Foo(), i.e. if no
+        argument list is specified, Foo is called without arguments.
+    3.The object returned by the constructor function becomes the result of the whole new
+        expression. If the constructor function doesn't explicitly return an object, the
+        object created in step 1 is used instead. (Normally constructors don't return a value,
+        but they can choose to do so if they want to override the normal object creation process.)
+
+When a property isn't found on an object we look up the prototype chain to find the property.
+All objects have the built-in Object.prototype as their top of the chain.
+
+Instead of using create() we can use setPrototypeOf() so that we do not create a new object
+
+Using Delegation as fallbacks can be "magical" leading to hard to understand code, so
+  it is important to use the delegation design pattern so that it is not that "magical".
