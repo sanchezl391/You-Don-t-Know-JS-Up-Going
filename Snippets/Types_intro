@@ -1,0 +1,6 @@
+JavaScript has seven built-in types: null, undefined, boolean, number,
+  string, object, symbol. They can be identified by the typeof operator.
+5 of these are primitive types.
+
+typeof undeclared variable = "undefined"
+  This can be used to check for the existence of a variable.
