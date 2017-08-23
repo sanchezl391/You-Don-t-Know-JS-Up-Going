@@ -1,0 +1,32 @@
+Arrays and Strings are not the same.
+  Arrays are mutable and String are immutable.
+
+Arrays have handful operations that are not available for Strings.
+  However these operations can be "borrowed"
+
+    var a = 'foo';
+    a.join;			// undefined
+    a.map;			// undefined
+    var c = Array.prototype.join.call( a, "-" );
+    c;				// "f-o-o"
+
+void can be used to make any value undefined
+
+To test for NaN value we can use Number.isNaN();
+
+Object.is() can be used to compare values including -0 and NaN
+
+Simple values (aka scalar primitives) are always assigned/passed
+  by value-copy: null, undefined, string, number, boolean, and ES6's symbol.
+
+  Compound values -- objects (including arrays, and all boxed
+    object wrappers -- see Chapter 3) and functions -- always create
+    a copy of the reference on assignment or passing.
+
+  An array can be modified through reference by modifying the existing array.
+    So, instead of creating a new array we must modify the existing one.
+      arr.length = 0   arr.push(..)
+    To not modify the existing array, we must make a shallow copy and modify the copy.
+
+  To always be able to edit a primitive's original value, we engulf the primitive
+    with a compound value.

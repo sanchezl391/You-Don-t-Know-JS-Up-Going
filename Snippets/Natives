@@ -1,0 +1,10 @@
+Natives refers to object wrappers for primitives
+  Ex. var a = new String('abc');
+      a//Object Wrapper for 'abc'
+
+Browsers are optimized to box primitives to perform operations on them.
+Generally it is not a good idea to use natives.
+
+  Boxing primitives is usually frowned upon.
+
+  Getting boxed primitive values is done with valueOf()
