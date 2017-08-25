@@ -1,0 +1,49 @@
+Abstract Value Operations-These operations are done on all coercions
+  Value-> String is done with the abstract toString() operation
+    JSON
+      toJSON() is not coercion, but acts similarly
+  Value-> Number is done with toNumber()
+    true=1
+    false=0
+    When dealing with objects Number() will check if there is
+      a valueOf() or toString() functions inside of the object
+  Value-> Boolean is done with  toBoolean()
+    Anything that isn't false is true: undefined, null, false,0, NaN, ""
+    All JS objects are=truth, except some objects provided by the browser
+    , but generally all objects = truth
+
+Explicit Coercion
+  Number <-> Strings
+    Number-> String
+      String(num)
+      num.toString()//implicitly wraps num, and then uses toString()
+    String-> Number
+      Number(str)
+      +str
+  Parsing Numeric Strings
+    parseInt() takes a string and makes it to a Number, however if non-number
+      value is encountered, then it stops looking for numbers to the right.
+    Coercion on the other hand will give NaN when trying to coerce a non-coerceable
+      value
+  Any value->Boolean
+    Boolean()
+    ! or !! or !!! or ...
+
+Implicit Coercion
+  String<-> Numbers
+    value + value
+      If either value is String or (valueOf() or toString) produces a string:
+        Then we concatenate as a string, numeric addition otherwise
+    '' + int = string
+    str - 0 = int
+    obj + obj => str + str=>int + int
+  Booleans-> Numbers
+    +boolean => Number
+  Value-> Boolean
+    Values are coerced when comparing values
+    || and &&
+      First, the values are coerced into boolean values and then one of the values
+        are used.
+        Ex: var a = 'Hello' || null;//a = 'Hello'
+            var b = 'Hello' && null;//a = null
+    ..Left off at symbol coercion
