@@ -47,3 +47,42 @@ Implicit Coercion
         Ex: var a = 'Hello' || null;//a = 'Hello'
             var b = 'Hello' && null;//a = null
     ..Left off at symbol coercion
+
+Loose Equals vs. Strict Equals
+  == allows coercion
+  === disallows coercion
+
+Abstract Equality '=='
+  If two values are of same type then they are compared via identity.
+    Ex. 42 only equals 42
+  When comparing two objects, then they are equal only when they are references
+    to the same value.
+  When comparing different types, then 1 or both values will be implicitly coerced
+    to same type.
+
+  Comparing String to Number
+    42 == '42'
+      String is coerced into a number
+  Comparing anything to Boolean
+    '42' == true//false
+      Boolean value is first made into number
+        '42' == 1
+      Now String is made into number
+        42 == 1//false
+  Comparing null to undefined
+    null == undefined//Always true
+  Comparing Objects to Non-Objects
+    42 == [42]//true
+      Object is made toPrimitive()//Abstract value Operations
+      42 == 42//true
+    Object('abc') == 'abc'//true
+    'abc' == 'abc'
+
+If either side of the comparison can have true or false values, don't ever,
+  EVER use ==.
+  If either side of the comparison can have [], "", or 0 values, seriously
+    consider not using ==.
+  In these scenarios, it's almost certainly better to use === instead of ==,
+    to avoid unwanted coercion.
+  Follow those two simple rules and pretty much all the coercion gotchas that
+    could reasonably hurt you will effectively be avoided.
