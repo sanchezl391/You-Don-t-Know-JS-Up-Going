@@ -78,11 +78,17 @@ Abstract Equality '=='
     Object('abc') == 'abc'//true
     'abc' == 'abc'
 
-If either side of the comparison can have true or false values, don't ever,
-  EVER use ==.
-  If either side of the comparison can have [], "", or 0 values, seriously
-    consider not using ==.
-  In these scenarios, it's almost certainly better to use === instead of ==,
-    to avoid unwanted coercion.
-  Follow those two simple rules and pretty much all the coercion gotchas that
-    could reasonably hurt you will effectively be avoided.
+Safely using Implicit coercion
+  If either side of the comparison can have true or false values, don't ever,
+    EVER use ==.
+    If either side of the comparison can have [], "", or 0 values, seriously
+      consider not using ==.
+    In these scenarios, it's almost certainly better to use === instead of ==,
+      to avoid unwanted coercion.
+    Follow those two simple rules and pretty much all the coercion gotchas that
+      could reasonably hurt you will effectively be avoided.
+Being more explicit/verbose in these cases will save you from a lot of headaches.
+
+Abstract Relational Comparison (a < b)
+  1. ToPrimitive tries to make a, b into String
+  2. If there is no string, then use toNumber to compare a, b numerically
